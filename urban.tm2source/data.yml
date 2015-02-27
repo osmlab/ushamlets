@@ -1,0 +1,41 @@
+_prefs: 
+  disabled: []
+  inspector: false
+  mapid: samely.2ef8754d
+  rev: s-caeef30d
+  saveCenter: true
+attribution: ''
+center: 
+  - 1.7578
+  - 29.3056
+  - 3
+description: urban areas
+Layer: 
+  - id: urban
+    Datasource: 
+      dbname: USAHamlets
+      extent: -180,-85.0511,180,85.0511
+      geometry_field: geom
+      geometry_table: ''
+      host: localhost
+      key_field: gid
+      max_size: 512
+      password: Pekitas173
+      port: 5432
+      table: |-
+        ( SELECT gid, scalerank, geom
+         FROM urban 
+         WHERE geom && !bbox! 
+         ) as data
+      type: postgis
+      user: postgres
+    description: urban areas
+    fields: 
+      gid: Number
+      scalerank: Number
+    properties: 
+      "buffer-size": 8
+    srs: +proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs
+maxzoom: 15
+minzoom: 3
+name: urban

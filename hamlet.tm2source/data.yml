@@ -1,0 +1,61 @@
+_prefs: 
+  disabled: []
+  inspector: false
+  mapid: samely.5d3d9013
+  rev: s-7f40f093
+  saveCenter: true
+attribution: ''
+center: 
+  - -131.1328
+  - 53.2784
+  - 3
+description: hamlets in usa
+Layer: 
+  - id: hamlet
+    Datasource: 
+      dbname: USAHamlets
+      extent: -180,-85.0511,180,85.0511
+      geometry_field: ''
+      geometry_table: ''
+      host: localhost
+      key_field: ''
+      max_size: 512
+      password: Pekitas173
+      port: 5432
+      table: |-
+        (SELECT 
+         gid,
+         name,
+         geom,
+        gnis_count
+         
+        FROM hamletpoint 
+        WHERE geom && !bbox! and CASE
+        
+        WHEN  z(!scale_denominator!)=3 AND gnis_count  < 15  THEN TRUE
+        WHEN  z(!scale_denominator!)=4 AND gnis_count  < 20 THEN TRUE
+        WHEN  z(!scale_denominator!)=5 AND gnis_count  < 50 THEN TRUE
+        WHEN  z(!scale_denominator!)=6 AND gnis_count  < 100 THEN TRUE
+        WHEN  z(!scale_denominator!)=7 AND gnis_count  < 200 THEN TRUE
+        WHEN  z(!scale_denominator!)=8 AND gnis_count  < 300 THEN TRUE
+        WHEN  z(!scale_denominator!)=9 AND gnis_count  < 400  THEN TRUE
+         WHEN  z(!scale_denominator!)=10 AND gnis_count  < 500  THEN TRUE
+         WHEN  z(!scale_denominator!)= 11 AND gnis_count  < 600  THEN TRUE
+         WHEN  z(!scale_denominator!)=12 AND gnis_count  < 700  THEN TRUE
+         WHEN  z(!scale_denominator!)>=13 AND gnis_count  < 850  THEN TRUE
+         END)  
+        
+        as data
+      type: postgis
+      user: postgres
+    description: hamlets
+    fields: 
+      gid: Number
+      gnis_count: Number
+      name: String
+    properties: 
+      "buffer-size": 8
+    srs: +proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs
+maxzoom: 15
+minzoom: 3
+name: hamlet

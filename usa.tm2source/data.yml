@@ -1,0 +1,40 @@
+_prefs: 
+  disabled: []
+  inspector: false
+  mapid: samely.f3180261
+  rev: s-ffd83158
+  saveCenter: true
+attribution: ''
+center: 
+  - 2.0215
+  - 9.2756
+  - 3
+description: USA map
+Layer: 
+  - id: usa
+    Datasource: 
+      dbname: USAHamlets
+      extent: -180,-85.0511,180,85.0511
+      geometry_field: geom
+      geometry_table: ''
+      host: localhost
+      key_field: gid
+      max_size: 512
+      password: Pekitas173
+      port: 5432
+      table: |
+        ( SELECT gid, geom
+         FROM usalines 
+         WHERE geom && !bbox! 
+         ) as data
+      type: postgis
+      user: postgres
+    description: USA map
+    fields: 
+      gid: Number
+    properties: 
+      "buffer-size": 8
+    srs: +proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs
+maxzoom: 15
+minzoom: 3
+name: usa

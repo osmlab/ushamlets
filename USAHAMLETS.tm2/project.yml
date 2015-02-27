@@ -1,0 +1,25 @@
+_prefs: 
+  mapid: samely.e6763691
+  saveCenter: true
+_properties: {}
+attribution: ''
+bounds: 
+  - -180
+  - -85.0511
+  - 180
+  - 85.0511
+center: 
+  - -90.7685
+  - 34.5533
+  - 17
+description: Hamlets around USA
+format: "png8:m=h"
+interactivity_layer: ''
+layers: null
+maxzoom: 19
+minzoom: 0
+name: HamletsInUSA
+source: "mapbox:///mapbox.satellite,mapbox.mapbox-streets-v5,samely.2ef8754d,samely.f3180261,samely.5d3d9013"
+styles: 
+  - style.mss
+template: ''
