@@ -6,38 +6,42 @@
         <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
         <script src='https://api.tiles.mapbox.com/mapbox.js/v2.1.5/mapbox.js'></script>
         <link href='https://api.tiles.mapbox.com/mapbox.js/v2.1.5/mapbox.css' rel='stylesheet' />
-
+        <LINK REL=StyleSheet HREF="button.css" TYPE="text/css" MEDIA=screen>
+<script src='https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-hash/v0.2.1/leaflet-hash.js'></script>
 
         <style>
             body { margin:0; padding:0; }
             #map { position:absolute; top:0; bottom:0; width:100%; }
+
+
         </style>
 
     </head>
 
-    <body>               
-        <div id='map'></div>
-
+    <body>       
+        <div id='map'></div>        
+        
+            <div class="gridcontainer">
+                <div class="grid">
+                    <div class="fmcircle_out">
+                        <a class="mapbox-improve" href="http://www.openstreetmap.org/edit#map=" target="_blank">
+                         
+                                <div class="fmcircle_in fmcircle_blue">
+                                    <span>Edit</span><img src="edit.png" alt=""/>
+                                </div>                           
+                        </a>
+                    </div>
+                </div>
+            </div>
+        
         <script>
 
             L.mapbox.accessToken = 'pk.eyJ1Ijoic2FtZWx5IiwiYSI6IkNtdjJXV3MifQ.TKVBUTNt9m674cZS2wyo-g';
-
-
             var map = L.mapbox.map('map', 'samely.e6763691', {infoControl: false, attributionControl: true}).setView([40.764, -90.901], 5);
 
-            /*
-             var center = map.getCenter();
-             var lat = center.lat;
-             var long = center.lng;
-             var z = map.getZoom();
-             
-             var tg = z + '/' + lat + '/' + long;*/
 
-
-            map.attributionControl.addAttribution(
-            '<a href="http://www.openstreetmap.org/copyright"><font face="Arial Tur"> © OpenStreetMap <font></a>\n\
-            <a href="https://www.mapbox.com/about/maps/"><font face="Arial Tur"> © Mapbox <font></a>\n\
-            <a class="mapbox-improve" href="http://www.openstreetmap.org/edit#map=" target="_blank><font face="Arial Tur"> Improve this map <font></a>');
+            map.attributionControl.addAttribution('<a href="http://www.openstreetmap.org/copyright"><font face="Arial Tur"> © OpenStreetMap <font></a>\n\
+            <a href="https://www.mapbox.com/about/maps/"><font face="Arial Tur"> © Mapbox <font></a>');
 
             var editLink = function () {
                 if (!document.getElementsByClassName) {
@@ -54,9 +58,8 @@
 
             editLink();
             map.on('moveend', editLink);
-
-
-        </script>
+            
+            var hash = L.hash(map);
+        </script>        
     </body>
-
 </html>
